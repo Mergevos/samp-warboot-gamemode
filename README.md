@@ -48,6 +48,10 @@ Functions must have prefix of module
 All functions must use void tag if function doesn't return anything
 
 ```c
+stock void:Function() 
+{
+}
+
 database_Connect() //if used as static 
 Database_Connect() //if not
 ```
