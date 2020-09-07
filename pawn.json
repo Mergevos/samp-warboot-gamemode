@@ -11,7 +11,8 @@
 		"samp-incognito/samp-streamer-plugin",
 		"maddinat0r/sscanf",
 		"dakyskye/pawn-env",
-		"pBlueG/SA-MP-MySQL"
+		"pBlueG/SA-MP-MySQL",
+		"lassir/bcrypt-samp"
 	],
 	"builds": [
 		{
@@ -25,7 +26,9 @@
 				"-Z"
 			],
 			"includes": [
-				"gamemodes/Modules/database"
+				"gamemodes/Modules/database",
+				"gamemodes/Modules/misc",
+				"gamemodes/Modules/account"
 			]
 		}
 	],
