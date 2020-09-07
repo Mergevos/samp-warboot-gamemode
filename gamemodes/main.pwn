@@ -8,11 +8,18 @@
 #include < YSI_Core\y_core\y_globaltags >
 //pawnplus
 #include < PawnPlus >
+#include < pp-mysql >
+//hash
+#include < bcrypt >
 //env
 #include < env >
 //Modules
 //Modules/database
 #include < database >
+//modules/misc
+#include < misc >
+//Modules/account
+#include < accounts >
 
 
 main()
