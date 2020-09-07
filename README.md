@@ -18,11 +18,36 @@ sampctl package build
 sampctl package run
 ```
 
-## Usage
+# How to contribute.
+ 
+## Variable Declaration
+### Global
+```c
+// Global static variables have to be lower snake case.
+// e.g
+static 
+    this_Variable;
+// While new variables have to be upper snake case.
+new 
+    This_New;
 
-<!--
-Write your code documentation or examples here. If your library is documented in
-the source code, direct users there. If not, list your API and describe it well
-in this section. If your library is passive and has no API, simply omit this
-section.
--->
+```
+### Local
+```c
+// We only accept this way of declaration
+
+new 
+    First,
+    Second,
+    Third;
+```
+
+### Functions
+
+Functions must have prefix of module
+All functions must use void tag if function doesn't return anything
+
+```c
+database_Connect() //if used as static 
+Database_Connect() //if not
+```
