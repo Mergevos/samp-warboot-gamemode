@@ -12,7 +12,9 @@
 		"maddinat0r/sscanf",
 		"dakyskye/pawn-env",
 		"pBlueG/SA-MP-MySQL",
-		"lassir/bcrypt-samp"
+		"lassir/bcrypt-samp",
+		"Mergevos/samp-advanced-kicks",
+		"AGraber/samp-async-dialogs"
 	],
 	"builds": [
 		{
@@ -20,10 +22,11 @@
 			"version": "3.10.10",
 			"args": [
 				"-;+",
-				"-(+",
+				"-(+", 
 				"-d3",
 				"-E",
-				"-Z"
+				"-Z",
+				"-v"
 			],
 			"includes": [
 				"gamemodes/Modules/database",
