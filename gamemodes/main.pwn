@@ -3,13 +3,19 @@
 //database
 #include < a_mysql >
 // --
-// Void/String
+// Void/String/color
 // --
 #include < YSI_Core\y_core\y_globaltags >
+#include < YSI_Server\y_colors >
+
 //pawnplus
+#define PP_SYNTAX_AWAIT
 #include < PawnPlus >
 #include < pp-mysql >
+#include < advanced_kicks >
+#include < async-dialogs >
 //hash
+#define BCRYPT_COST 12
 #include < bcrypt >
 //env
 #include < env >
@@ -22,6 +28,8 @@
 #include < accounts >
 
 
+
+
 main()
 {
     return;
@@ -29,6 +37,7 @@ main()
 
 public OnGameModeInit()
 {
+    pp_use_funcidx(true);
     return 1;
 }
 
