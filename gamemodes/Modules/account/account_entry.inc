@@ -2,7 +2,8 @@ static
     account_ID[MAX_PLAYERS],
     account_Name[MAX_PLAYERS][MAX_PLAYER_NAME],
     account_Email[MAX_PLAYERS][40],
-    account_Password[MAX_PLAYERS][61];
+    account_Password[MAX_PLAYERS][61],
+    account_Password_Attempts[MAX_PLAYERS] = 0;
 
 /*                 */
 /*       APi       */
@@ -16,6 +17,16 @@ static
 stock Account_ReturnID(playerid)
 {
     return account_ID[playerid];
+}
+
+/*
+  * <summary> Return account's login attempts</summary>
+  * <param name="playerid"> playerid to return</param>
+  */
+
+stock Account_ReturnLoginAttempts(playerid)
+{
+    return account_Password_Attempts[playerid];
 }
 
 // --
@@ -52,10 +63,39 @@ stock Account_ReturnName(playerid)
 }
 
  /*
+  * <summary> Seta account's sqlid</summary>
+  * <param name="playerid"> playerid to Sett ID</param>
+  * <param name="name"> id to set</param>
+  */
+
+stock Account_SetID(playerid, const id)
+{
+    account_ID[playerid] = id;
+}
+
+/*
+  * <summary> Sets account's login attempts</summary>
+  * <param name="playerid"> playerid to set</param>
+  * <param name="amount"> amount to set</param>
+  */
+
+stock Account_SetLoginAttempts(playerid, amount)
+{
+    account_Password_Attempts[playerid] = amount;
+}
+
+
+ /*
   * <summary> Seta account's name</summary>
   * <param name="playerid"> playerid to Sett ID</param>
   * <param name="name"> Name to set</param>
   */
+
+
+stock Account_SetPassword(playerid, const pass[61])
+{
+    strcopy(account_Password[playerid], pass);
+}
 
 stock Account_SetName(playerid, const name[MAX_PLAYER_NAME])
 {
@@ -64,6 +104,18 @@ stock Account_SetName(playerid, const name[MAX_PLAYER_NAME])
 
  /*
   * <summary> Seta account's name</summary>
+  * <param name="playerid"> playerid to Sett ID</param>
+  * <param name="name"> Name to set</param>
+  */
+
+stock Account_SetEmail(playerid, const email[])
+{
+    strcopy(account_Email[playerid], email);
+}
+
+
+ /*
+  * <summary> Resets player info</summary>
   * <param name="playerid"> playerid to reset info</param>
   */
 
