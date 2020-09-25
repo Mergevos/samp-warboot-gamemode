@@ -3,7 +3,8 @@ static
     account_Name[MAX_PLAYERS][MAX_PLAYER_NAME],
     account_Email[MAX_PLAYERS][40],
     account_Password[MAX_PLAYERS][61],
-    account_Password_Attempts[MAX_PLAYERS] = 0;
+    account_Password_Attempts[MAX_PLAYERS] = 0,
+    account_Player_Choosen_Country[MAX_PLAYERS];
 
 /*                 */
 /*       APi       */
@@ -28,6 +29,17 @@ stock Account_ReturnLoginAttempts(playerid)
 {
     return account_Password_Attempts[playerid];
 }
+
+/*
+  * <summary> Return account's choosen country</summary>
+  * <param name="playerid"> playerid to return</param>
+  */
+
+stock Account_ReturnCountry(playerid)
+{
+    return account_Player_Choosen_Country[playerid];
+}
+
 
 // --
 // <summary> Return account's email</summary>
@@ -126,5 +138,15 @@ stock Account_ResetInfo(playerid)
     account_Name[playerid][0] = EOS,
     account_Email[playerid][0] = EOS,
     account_Password[playerid][0] = EOS;
+}
+
+/*
+  * <summary> Sets account's choosen country</summary>
+  * <param name="playerid"> playerid to set</param>
+  */
+
+stock Account_SetCountry(playerid, value)
+{
+    account_Player_Choosen_Country[playerid] = value;
 }
 
