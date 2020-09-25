@@ -1,5 +1,11 @@
-stock Account_LoginDialog(playerid)
+/*
+  * <summary> Handles login dialog</summary>
+  * <param name="playerid"> playerid to handle dialogid</param>
+  */
+
+stock void:Account_LoginDialog(playerid)
 {
+    task_yield(1);
     static 
         account_LoginDialogHandle[e_DIALOG_RESPONSE_INFO];
     TogglePlayerSpectating(playerid, true);
@@ -12,13 +18,9 @@ stock Account_LoginDialog(playerid)
     str_new(""GREEN"Continue"), str_new(""RED"Exit")), account_LoginDialogHandle);
 
     if(account_LoginDialogHandle[E_DIALOG_RESPONSE_Response]) {
-        if(account_LoginDialogHandle[E_DIALOG_RESPONSE_InputText] == 0) {
-            Account_LoginDialog(playerid);
-        }
         bcrypt_check(account_LoginDialogHandle[E_DIALOG_RESPONSE_InputText], Account_ReturnPassword(playerid), "OnPasswordChecked", "d", playerid);
     }
     else {
         KickEx(playerid, ""INDIANRED"[WARBOOT] {ffffff}You've been kicked because you didn't want to login", false);
     }
-    return 1;
 }

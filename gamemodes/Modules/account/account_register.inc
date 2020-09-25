@@ -1,3 +1,8 @@
+/*
+  * <summary> Handles register dialog</summary>
+  * <param name="playerid"> playerid to handle dialogid</param>
+  */
+
 stock Account_RegisterHandler(playerid)
 {
     task_yield(1);
@@ -14,14 +19,20 @@ stock Account_RegisterHandler(playerid)
     
     if(account_RegisterHandler[E_DIALOG_RESPONSE_Response]) {
         if(strlen(account_RegisterHandler[E_DIALOG_RESPONSE_InputText]) < 6 || strlen(account_RegisterHandler[E_DIALOG_RESPONSE_InputText]) > 24) {
-            Account_RegisterHandler(playerid);
+            return Account_RegisterHandler(playerid);
         }
         bcrypt_hash(account_RegisterHandler[E_DIALOG_RESPONSE_InputText], BCRYPT_COST, "OnPasswordHashed", "d", playerid);
     }
     else {
         KickEx(playerid, ""INDIANRED"[WARBOOT] {ffffff}You've been kicked because you didn't want to login", false);
     }
+    return 0;
 }
+
+/*
+  * <summary> Handles email dialog</summary>
+  * <param name="playerid"> playerid to handle dialogid</param>
+  */
 
 stock Account_EmailDialogHandler(playerid)
 {
@@ -38,7 +49,7 @@ stock Account_EmailDialogHandler(playerid)
     
     if(account_EmailDialogResponse[E_DIALOG_RESPONSE_Response]) {
         if (!(6 <= strlen(account_EmailDialogResponse[E_DIALOG_RESPONSE_InputText]) <= 40)) {
-            Account_EmailDialogHandler(playerid);
+            return Account_EmailDialogHandler(playerid);
         }
         Account_SetEmail(playerid, account_EmailDialogResponse[E_DIALOG_RESPONSE_InputText]);
         registerPlayer(playerid);
@@ -46,9 +57,15 @@ stock Account_EmailDialogHandler(playerid)
     else {
         KickEx(playerid, ""INDIANRED"[WARBOOT] {ffffff}You've been kicked because you didn't want to login", false);
     }
+    return 0;
 }
 
-static stock registerPlayer(playerid)
+/*
+  * <summary> Handles registration</summary>
+  * <param name="playerid"> playerid to handle dialogid</param>
+  */
+
+static stock void:registerPlayer(playerid)
 {
     mysql_tquery_s(Database_ReturnHandle(),
         str_format(
