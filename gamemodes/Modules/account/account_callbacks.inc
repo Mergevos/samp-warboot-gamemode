@@ -29,15 +29,6 @@ public void:OnPasswordHashed(playerid)
     Account_EmailDialogHandler(playerid);
 }
 
-forward OnPlayerRegister(playerid);
-public void: OnPlayerRegister(playerid)
-{
-    Account_SetID(playerid, cache_insert_id());
-    TogglePlayerSpectating(playerid, false);
-    SetSpawnInfo(playerid, NO_TEAM, 3, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
-    SpawnPlayer(playerid);
-}
-
 forward OnPasswordChecked(playerid);
 public void:OnPasswordChecked(playerid)
 {
@@ -45,11 +36,9 @@ public void:OnPasswordChecked(playerid)
         bool:match = bcrypt_is_equal();
 
     if(match) {
-        SetSpawnInfo(playerid, NO_TEAM, 3, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
-        SpawnPlayer(playerid);
-        TogglePlayerSpectating(playerid, false);
-        Account_SetPassword(playerid, "");
-    }
+        CallLocalFunction("OnPlayerLogin", "i", playerid);
+        strdel(Account_ReturnPassword(playerid), 0, 61);
+    } 
     else {
         Account_SetLoginAttempts(playerid, Account_ReturnLoginAttempts(playerid) + 1);
         if(Account_ReturnLoginAttempts(playerid) == 3) {
