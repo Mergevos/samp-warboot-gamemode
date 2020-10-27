@@ -10,7 +10,7 @@
 #include < YSI_Core\y_core\y_globaltags >
 #include < YSI_Server\y_colors >
 #include < YSI_Coding\y_va >
-#include < YSI_Coding\y_inline >
+//#include < YSI_Coding\y_inline >
 #include < sscanf2 >
 
 //cmd//
