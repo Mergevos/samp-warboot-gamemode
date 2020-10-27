@@ -36,7 +36,7 @@ stock void:Vehicle_CreateVehicle(vehicleid, model, type, Float: x, Float: y, Flo
     SetVehicleVirtualWorld(vehicleid, virtualworld);
 
     new String: Query = str_format("INSERT INTO `vehicle_entry` (`X`, `Y`, `Z`, `A`) VALUES (%f, %f, %f, %f)", x, y, z, a);
-    mysql_tquery_s(g_SQL, Query, "OnCreateVeh", "i", vehicleid);
+    mysql_tquery_s(Database_ReturnHandle(), Query, "OnCreateVeh", "i", vehicleid);
 
 }
 
@@ -54,7 +54,7 @@ public OnCreateVeh(vehicleid) {
         Vehicle_SQLID[vehicleid], Vehicle_Type[vehicleid], Vehicle_Params[vehicleid][0], Vehicle_Params[vehicleid][1],
         Vehicle_Params[vehicleid][2], Vehicle_Params[vehicleid][3], Vehicle_Params[vehicleid][4], Vehicle_Params[vehicleid][5], Vehicle_Params[vehicleid][6]
     );
-    mysql_tquery_s(g_SQL, Query);
+    mysql_tquery_s(Database_ReturnHandle(), Query);
 }
 // --
 // <summary> Set vehicle engine state</summary>
@@ -67,8 +67,8 @@ stock void:SetVehicleEngineState(vehicleid, bool:stat)
     static query[100];
     if(Iter_Contains(Vehicles, vehicleid)) {
         
-        mysql_format(g_SQL, query, sizeof(query), "UPDATE `vehicle_params` SET `Engine` = %d WHERE `ID` = %d", Vehicle_Params[vehicleid][0], Vehicle_SQLID[vehicleid]);
-        mysql_tquery(g_SQL, query);
+        mysql_format(Database_ReturnHandle(), query, sizeof(query), "UPDATE `vehicle_params` SET `Engine` = %d WHERE `ID` = %d", Vehicle_Params[vehicleid][0], Vehicle_SQLID[vehicleid]);
+        mysql_tquery(Database_ReturnHandle(), query);
     }
     SetVehicleParamsEx(vehicleid, stat ? VEHICLE_PARAMS_ON : VEHICLE_PARAMS_OFF,Vehicle_Params[vehicleid][1], Vehicle_Params[vehicleid][2], Vehicle_Params[vehicleid][3], Vehicle_Params[vehicleid][4], Vehicle_Params[vehicleid][5], Vehicle_Params[vehicleid][6]);
 }
@@ -98,8 +98,8 @@ stock void:SetVehicleLightsState(vehicleid, bool:stat)
     Vehicle_Params[vehicleid][1] = stat ? 1 : 0;
     static query[100];
     if(Iter_Contains(Vehicles, vehicleid)) {
-        mysql_format(g_SQL, query, sizeof(query), "UPDATE `vehicle_params` SET `Lights` = %d WHERE `ID` = %d", Vehicle_Params[vehicleid][1], Vehicle_SQLID[vehicleid]);
-        mysql_tquery(g_SQL, query);
+        mysql_format(Database_ReturnHandle(), query, sizeof(query), "UPDATE `vehicle_params` SET `Lights` = %d WHERE `ID` = %d", Vehicle_Params[vehicleid][1], Vehicle_SQLID[vehicleid]);
+        mysql_tquery(Database_ReturnHandle(), query);
     }
     SetVehicleParamsEx(vehicleid, Vehicle_Params[vehicleid][0], stat ? VEHICLE_PARAMS_ON : VEHICLE_PARAMS_OFF, Vehicle_Params[vehicleid][2], Vehicle_Params[vehicleid][3], Vehicle_Params[vehicleid][4], Vehicle_Params[vehicleid][5], Vehicle_Params[vehicleid][6]);
 }

@@ -4,7 +4,7 @@
 
 stock LoadVehicles()
 {
-    mysql_tquery(g_SQL,
+    mysql_tquery(Database_ReturnHandle(),
         "SELECT * FROM \
         `vehicle_entry` \
         LEFT JOIN `vehicle_info` \
