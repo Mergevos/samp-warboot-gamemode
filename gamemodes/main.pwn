@@ -1,5 +1,7 @@
 #include < a_samp >
-
+#undef MAX_PLAYERS
+#define MAX_PLAYERS 50
+#include < fixes >
 //database
 #include < a_mysql >
 // --
@@ -10,6 +12,8 @@
 #include < YSI_Coding\y_va >
 #include < sscanf2 >
 
+//cmd//
+#include < YSI_Visual\y_commands >
 //pawnplus
 #define PP_SYNTAX_AWAIT
 #include < PawnPlus >
@@ -27,14 +31,23 @@
 // flag models
 #include < world-flags >
 //Modules
+// Modules/ 
+
+#include <cmd_proc>
 //Modules/database
 #include < database >
 //modules/misc
 #include < misc >
 //Modules/account
 #include < accounts >
+#include < admin >
 //Modules/character
 #include < characters >
+
+// Modules/chats/
+#include <cooldown>
+#include < chats >
+
 
 main()
 {
