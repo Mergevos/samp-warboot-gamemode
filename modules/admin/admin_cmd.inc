@@ -21,3 +21,22 @@ CMD:makeadmin(playerid, params[])
     return COMMAND_OK;
 
 }
+
+ACMD:[1]aduty(playerid, params[]) {
+    static
+        string[64];
+    
+    if(sscanf(params, "d", params[0])) {
+        return Message_SendUsage(playerid, "/aduty [Code]");
+    }
+
+    if(!(params[0] == Admin_ReturnCode(playerid))) {
+        return Message_SendError(playerid, "Entered code is invalid.");
+    }
+
+    Admin_SetDuty(playerid, Admin_IsOnDuty(playerid) ? false : true);
+
+    format(string, sizeof(string), ""GOLD" // INFO // {ffffff} You are now %s", Admin_IsOnDuty(playerid) ? "on duty." : "off duty.");
+    SendClientMessage(playerid, -1, string);
+    return COMMAND_OK;
+}

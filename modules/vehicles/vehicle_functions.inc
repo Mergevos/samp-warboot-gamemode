@@ -36,12 +36,12 @@ stock void:Vehicle_CreateVehicle(vehicleid, model, type, Float: x, Float: y, Flo
     SetVehicleVirtualWorld(vehicleid, virtualworld);
 
     new String: Query = str_format("INSERT INTO `vehicle_entry` (`X`, `Y`, `Z`, `A`) VALUES (%f, %f, %f, %f)", x, y, z, a);
-    mysql_tquery_s(Database_ReturnHandle(), Query, "OnCreateVeh", "i", vehicleid);
+    mysql_tquery_s(Database_ReturnHandle(), Query, "OnCreateVeh", "iiiiii", vehicleid, model, color1, color2, interior, virtualworld);
 
 }
 
-forward OnCreateVeh(vehicleid);
-public OnCreateVeh(vehicleid) {
+forward OnCreateVeh(vehicleid, model, color1, color2, interior, virtualworld);
+public OnCreateVeh(vehicleid, model, color1, color2, interior, virtualworld) {
     Vehicle_SQLID[vehicleid] = cache_insert_id();
     new String: Query = str_format(
         "INSERT INTO `vehicle_info` \

@@ -1,4 +1,4 @@
-/*ACMD:[6]createveh(playerid, params[])
+ACMD:[6]createveh(playerid, params[])
 {
     static Float: pos[4];
     if(!Admin_IsOnDuty(playerid)) {
@@ -38,13 +38,13 @@ ACMD:[6]rac(playerid, params[])
         return SendClientMessage(playerid, -1, "Niste admin na duznosti");
     }
     foreach(new i : Vehicles) {
-        if(!IsVehicl)
+        //if(!IsVehicl)
         SetVehicleToRespawn(i);
     }
     return COMMAND_OK;
-}*/
+}
 
-/*ACMD:[6]rtc(playerid, params[])
+ACMD:[6]rtc(playerid, params[])
 {
     if(!Admin_IsOnDuty(playerid)) {
         return SendClientMessage(playerid, -1, "Niste admin na duznosti");
@@ -58,7 +58,7 @@ ACMD:[6]rac(playerid, params[])
     SetVehicleToRespawn(GetPlayerVehicleID(playerid));
     return COMMAND_OK;
 }
-*/
+
 YCMD:engine(playerid, params[], help) 
 {
     if(help) {
