@@ -80,7 +80,8 @@
 				"modules/character",
 				"modules/cooldown",
 				"modules/chats",
-				"modules/admin"
+				"modules/admin",
+				"modules/vehicles"
 			],
 			"compiler": {}
 		}
