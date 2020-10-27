@@ -1,3 +1,8 @@
+// by IllidanS4
+/*
+ * <summary> Used to check if roleplay name is valid.</summary>
+ * <param name="playerid"> playerid whose name is to be checked</param>
+ */ 
 forward [MAX_PLAYER_NAME + 1]Misc_ReturnName(playerid);
 stock Misc_ReturnName(playerid)
 {

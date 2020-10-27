@@ -1,4 +1,25 @@
+/*
+ * <summary>Called when a player registers</summary>
+ * <param name="playerid"> playerid who  registered</param>
+ */
+
 forward OnPlayerRegister(playerid);
+
+/*
+ * <summary>Called when a player logins</summary>
+ * <param name="playerid"> playerid who login</param>
+ */
+ 
+forward OnPlayerLogin(playerid);
+
+/*
+ * <summary>Called when a player character got checked</summary>
+ * <param name="playerid"> playerid whose character got checked</param>
+ */
+ 
+forward OnPlayerCharacterChecked(playerid);
+
+//----------------------------------------------------------------
 public void: OnPlayerRegister(playerid)
 {
     Account_SetID(playerid, cache_insert_id());
@@ -6,7 +27,6 @@ public void: OnPlayerRegister(playerid)
     SelectTextDraw(playerid, -1);
 }
 
-forward OnPlayerLogin(playerid);
 public void: OnPlayerLogin(playerid)
 {
     mysql_tquery_s(
@@ -19,7 +39,6 @@ public void: OnPlayerLogin(playerid)
     
 }
 
-forward OnPlayerCharacterChecked(playerid);
 public OnPlayerCharacterChecked(playerid)
 {
     if(cache_num_rows()) {
@@ -37,6 +56,7 @@ public OnPlayerCharacterChecked(playerid)
         Character_SetAge(playerid, load_Age);
         Character_SetSkin(playerid, load_Skin);
         Character_SetCountry(playerid, load_Country);
+        Account_SetName(playerid, Misc_ReturnName(playerid));
         SetPlayerName(playerid, load_Name);
 
         TogglePlayerSpectating(playerid, false);

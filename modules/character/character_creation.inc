@@ -2,6 +2,14 @@ static const
     male_Skins[] = {21, 22, 24, 25, 26, 28, 29, 33, 34, 44, 62, 67, 78, 79, 132, 133, 134, 135, 229, 230, 231, 232},
     female_Skins[] = {11, 12, 13, 39, 40, 41, 55, 56, 64, 69, 89, 90, 91, 93, 129, 130, 131, 157, 169, 192, 195, 226};
 
+//------------------------------
+
+/*
+ * <summary>Handles character's country selection</summary>
+ * <param name="playerid"> playerid to handle</param>
+ * <param name="nationid"> Selected nation</param>
+ */
+
 stock Character_SelectNameDialog(playerid, const nationid)
 {
     task_yield(1);
@@ -35,7 +43,7 @@ stock Character_SelectNameDialog(playerid, const nationid)
            return Character_SelectNameDialog(playerid, nationid);
         }
         SetPVarString(playerid, "Char_Name", National_Dialog_Response[E_DIALOG_RESPONSE_InputText]); 
-        va_SendClientMessage(playerid, -1, ""INDIANRED"[WARBOOT] {ffffff} You've choosen your name as %s", National_Dialog_Response[E_DIALOG_RESPONSE_InputText]);
+        va_SendClientMessage(playerid, -1, ""INDIANRED"// WARBOOT // {ffffff} You've choosen your name as %s", National_Dialog_Response[E_DIALOG_RESPONSE_InputText]);
         Character_SelectGender(playerid);
         
     } else {
@@ -44,6 +52,11 @@ stock Character_SelectNameDialog(playerid, const nationid)
     }
     return 0;
 }
+
+/*
+ * <summary>Handles character's gender selection</summary>
+ * <param name="playerid"> playerid to handle</param>
+ */
 
 stock void: Character_SelectGender(playerid)
 {
@@ -60,14 +73,19 @@ stock void: Character_SelectGender(playerid)
 
     if(National_Gender_Response[E_DIALOG_RESPONSE_Response]) {
         Character_SetGender(playerid, 1);
-        SendClientMessage(playerid, -1, ""INDIANRED"[WARBOOT] {ffffff} You've choosen your gender as male");
+        SendClientMessage(playerid, -1, ""INDIANRED"// WARBOOT // {ffffff} You've choosen your gender as male");
         Character_SelectDateOfBirth(playerid);
     } else {
         Character_SetGender(playerid, 2); 
-        SendClientMessage(playerid, -1, ""INDIANRED"[WARBOOT] {ffffff} You've choosen your gender as female");
+        SendClientMessage(playerid, -1, ""INDIANRED"// WARBOOT // {ffffff} You've choosen your gender as female");
         Character_SelectDateOfBirth(playerid);
     }
 }
+
+/*
+ * <summary>Handles character's date of birth</summary>
+ * <param name="playerid"> playerid to handle</param>
+ */
 
 stock Character_SelectDateOfBirth(playerid)
 {
@@ -92,22 +110,22 @@ stock Character_SelectDateOfBirth(playerid)
 
     if(National_Date_Response[E_DIALOG_RESPONSE_Response]) {
         if (sscanf(National_Date_Response[E_DIALOG_RESPONSE_InputText], "p</>ddd", Day, Month, Year)) {
-            SendClientMessage(playerid, -1, ""INDIANRED"[WARBOOT] {ffffff}Your didn't use the correct syntax");
+            SendClientMessage(playerid, -1, ""INDIANRED" // WARBOOT // {ffffff}Your didn't use the correct syntax");
             return Character_SelectDateOfBirth(playerid);
         } else if (!(1930 < Year < 2020)) {
-            SendClientMessage(playerid, -1, ""INDIANRED"[WARBOOT] {ffffff}Your didn't input the correct year");
+            SendClientMessage(playerid, -1, ""INDIANRED" // WARBOOT // {ffffff}Your didn't input the correct year");
             return Character_SelectDateOfBirth(playerid);
             
         } else if (!(1 < Month < 12)) {
-            SendClientMessage(playerid, -1, ""INDIANRED"[WARBOOT] {ffffff}Your didn't input the correct month");
+            SendClientMessage(playerid, -1, ""INDIANRED" // WARBOOT // {ffffff}Your didn't input the correct month");
             return Character_SelectDateOfBirth(playerid);
             
         } else if (!(1 < Day < arr_Months_Days[Month - 1])) {
-            SendClientMessage(playerid, -1, ""INDIANRED"[WARBOOT] {ffffff}Your didn't input the correct day");
+            SendClientMessage(playerid, -1, ""INDIANRED" // WARBOOT // {ffffff}Your didn't input the correct day");
             return Character_SelectDateOfBirth(playerid);
             
         }
-        va_SendClientMessage(playerid, -1, ""INDIANRED"[WARBOOT] {ffffff}Your date of birth is %d/%d/%d", Day, Month, Year);
+        va_SendClientMessage(playerid, -1, ""INDIANRED" // WARBOOT // {ffffff}Your date of birth is %d/%d/%d", Day, Month, Year);
         format(Dob_String, sizeof(Dob_String), "%d/%d/%d", Day, Month, Year);
         Character_SetDOB(playerid, Dob_String);
         Character_SelectSkin(playerid);
@@ -116,6 +134,11 @@ stock Character_SelectDateOfBirth(playerid)
     }
     return 0;
 }
+
+/*
+ * <summary>Handles character's skin selection</summary>
+ * <param name="playerid"> playerid to handle</param>
+ */
 
 stock void: Character_SelectSkin(playerid)
 {

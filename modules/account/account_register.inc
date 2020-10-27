@@ -24,7 +24,7 @@ stock Account_RegisterHandler(playerid)
         bcrypt_hash(account_RegisterHandler[E_DIALOG_RESPONSE_InputText], BCRYPT_COST, "OnPasswordHashed", "d", playerid);
     }
     else {
-        KickEx(playerid, ""INDIANRED"[WARBOOT] {ffffff}You've been kicked because you didn't want to login", false);
+        KickEx(playerid, ""INDIANRED"// WARBOOT // {ffffff}You've been kicked because you didn't want to login", false);
     }
     return 0;
 }
@@ -55,7 +55,7 @@ stock Account_EmailDialogHandler(playerid)
         registerPlayer(playerid);
     }
     else {
-        KickEx(playerid, ""INDIANRED"[WARBOOT] {ffffff}You've been kicked because you didn't want to login", false);
+        KickEx(playerid, ""INDIANRED"// WARBOOT // {ffffff}You've been kicked because you didn't want to login", false);
     }
     return 0;
 }

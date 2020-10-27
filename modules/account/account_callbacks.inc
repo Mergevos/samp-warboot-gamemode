@@ -1,14 +1,37 @@
-
+/*
+ * <summary> Called after the account  get checked</summary>
+ * <param name="playerid"> Player ID of the player whose account was checked</param>
+ */
 forward OnPlayerAccountChecked(playerid);
+
+/*
+ * <summary> Called after the password  get hashed</summary>
+ * <param name="playerid"> Player ID of the player whose password was hashed</param>
+ */
+
+forward OnPasswordHashed(playerid);
+
+/*
+ * <summary> Called after the password  get checked</summary>
+ * <param name="playerid"> Player ID of the player whose password was checked</param>
+ */
+
+forward OnPasswordChecked(playerid);
+
+//------------------------------------------
 public OnPlayerAccountChecked(playerid)
 {
     if(cache_num_rows()) {
         static 
+            id,
             password[61],
             email[40];
+
+        cache_get_value_name_int(0, "account_id", id);
         cache_get_value_name(0, "account_password", password);
         cache_get_value_name(0, "account_email", email);
 
+        Account_SetID(playerid, id);
         Account_SetPassword(playerid, password);
         Account_SetEmail(playerid, email);
         Account_LoginDialog(playerid);
@@ -20,7 +43,6 @@ public OnPlayerAccountChecked(playerid)
     return 1;
 }
 
-forward OnPasswordHashed(playerid);
 public void:OnPasswordHashed(playerid)
 {
     new hash[61];
@@ -29,7 +51,6 @@ public void:OnPasswordHashed(playerid)
     Account_EmailDialogHandler(playerid);
 }
 
-forward OnPasswordChecked(playerid);
 public void:OnPasswordChecked(playerid)
 {
     new
@@ -43,7 +64,7 @@ public void:OnPasswordChecked(playerid)
         Account_SetLoginAttempts(playerid, Account_ReturnLoginAttempts(playerid) + 1);
         if(Account_ReturnLoginAttempts(playerid) == 3) {
             Account_SetLoginAttempts(playerid, 0);
-            KickEx(playerid, ""INDIANRED"[WARBOOT] {ffffff}You've been kicked because of too many password attempts");
+            KickEx(playerid, ""INDIANRED"// WARBOOT // {ffffff}You've been kicked because of too many password attempts");
         }
         Account_LoginDialog(playerid);
         

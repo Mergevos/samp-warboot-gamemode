@@ -20,5 +20,5 @@ hook OnPlayerClickTextDraw(playerid, Text:clickedid)
         CancelSelectTextDraw(playerid);
         Character_SelectNameDialog(playerid, 3);
     }
-    return 1;
+    return Y_HOOKS_CONTINUE_RETURN_1;
 }

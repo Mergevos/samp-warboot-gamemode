@@ -3,6 +3,14 @@ static auth_RaceCheck[MAX_PLAYERS];
 
 hook OnPlayerConnect(playerid)
 {
+    if(!Misc_IsRPNick(Misc_ReturnName(playerid))) {
+        KickEx(playerid, ""INDIANRED"// WARBOOT // {ffffff}You've been kicked because your name didn't match RP standards.", false);
+    }
+    return Y_HOOKS_CONTINUE_RETURN_1;
+}
+
+hook OnPlayerRequestClass(playerid, classid)
+{
     auth_RaceCheck[playerid] ++;   
     account_CheckIfExists(playerid, auth_RaceCheck[playerid]);
     return Y_HOOKS_CONTINUE_RETURN_1;

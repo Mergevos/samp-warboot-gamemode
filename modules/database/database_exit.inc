@@ -6,9 +6,9 @@ hook OnGameModeExit()
     return Y_HOOKS_CONTINUE_RETURN_1;
 }
 
-// --
-// <summary>Closes mysql connection in OnGameModeExit</summary>
-// --
+/*
+ *  <summary>Closes mysql connection in OnGameModeExit</summary>
+ */ 
 
 static stock closeSql()
 {

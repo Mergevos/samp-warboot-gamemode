@@ -10,17 +10,17 @@ static
 /*       APi       */
 /*                 */
 
-// --
-// <summary> Return account's sql id</summary>
-    // <param name="playerid"> playerid to return ID</param>
-// --
+/* --
+ * <summary> Return account's sql id</summary>
+ * <param name="playerid"> playerid to return ID</param>
+ */
 
 stock Account_ReturnID(playerid)
 {
     return account_ID[playerid];
 }
 
-/*
+ /*
   * <summary> Return account's login attempts</summary>
   * <param name="playerid"> playerid to return</param>
   */
@@ -41,10 +41,10 @@ stock Account_ReturnCountry(playerid)
 }
 
 
-// --
-// <summary> Return account's email</summary>
-    // <param name="playerid"> playerid to return email</param>
-// --
+/*
+ * <summary> Return account's email</summary>
+ * <param name="playerid"> playerid to return email</param>
+ */
 
 
 stock Account_ReturnEmail(playerid)
@@ -52,10 +52,10 @@ stock Account_ReturnEmail(playerid)
     return account_Email[playerid];
 }
 
-// --
-// <summary> Return account's password</summary>
-    // <param name="playerid"> playerid to return password</param>
-// --
+/*
+ * <summary> Return account's password</summary>
+ * <param name="playerid"> playerid to return password</param>
+ */
 
 
 stock Account_ReturnPassword(playerid)
@@ -63,10 +63,10 @@ stock Account_ReturnPassword(playerid)
     return account_Password[playerid];
 }
 
-// --
-// <summary> Return account's name</summary>
-    // <param name="playerid"> playerid to return name</param>
-// --
+/*
+ * <summary> Return account's name</summary>
+ * <param name="playerid"> playerid to return name</param>
+ */
 
 
 stock Account_ReturnName(playerid)
@@ -98,9 +98,9 @@ stock Account_SetLoginAttempts(playerid, amount)
 
 
  /*
-  * <summary> Seta account's name</summary>
-  * <param name="playerid"> playerid to Sett ID</param>
-  * <param name="name"> Name to set</param>
+  * <summary> Seta account's password</summary>
+  * <param name="playerid"> playerid to Sett password</param>
+  * <param name="pass"> password to set</param>
   */
 
 
@@ -109,15 +109,22 @@ stock Account_SetPassword(playerid, const pass[61])
     strcopy(account_Password[playerid], pass);
 }
 
-stock Account_SetName(playerid, const name[MAX_PLAYER_NAME])
+
+/*
+  * <summary> Seta account's name</summary>
+  * <param name="playerid"> playerid to Sett name</param>
+  * <param name="name"> Name to set</param>
+  */
+
+stock Account_SetName(playerid, const name[MAX_PLAYER_NAME+1])
 {
     strcopy(account_Name[playerid], name);
 }
 
  /*
-  * <summary> Seta account's name</summary>
-  * <param name="playerid"> playerid to Sett ID</param>
-  * <param name="name"> Name to set</param>
+  * <summary> Seta account's email</summary>
+  * <param name="playerid"> playerid to Sett email</param>
+  * <param name="email"> Email to set</param>
   */
 
 stock Account_SetEmail(playerid, const email[])

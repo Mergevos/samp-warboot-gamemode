@@ -6,9 +6,9 @@ stock MySQL: Database_ReturnHandle()
     return handle_Sql;
 }
 
-// --
-// <summary>Handles the mysql connection which's triggered in OnGameModeInit</summary>
-// --
+/*
+ * <summary>Handles the mysql connection which's triggered in OnGameModeInit</summary>
+ */
 
 stock Database_Connect()
 {

@@ -21,6 +21,6 @@ stock void:Account_LoginDialog(playerid)
         bcrypt_check(account_LoginDialogHandle[E_DIALOG_RESPONSE_InputText], Account_ReturnPassword(playerid), "OnPasswordChecked", "d", playerid);
     }
     else {
-        KickEx(playerid, ""INDIANRED"[WARBOOT] {ffffff}You've been kicked because you didn't want to login", false);
+        KickEx(playerid, ""INDIANRED"// WARBOOT // {ffffff}You've been kicked because you didn't want to login", false);
     }
 }

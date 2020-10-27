@@ -3,7 +3,7 @@ static
     character_Age[MAX_PLAYERS],
     character_Skin[MAX_PLAYERS],
     character_Gender[MAX_PLAYERS],
-	character_DOB[MAX_PLAYER_NAME][32],
+    character_DOB[MAX_PLAYER_NAME][32],
     character_User_Name[MAX_PLAYERS][MAX_PLAYER_NAME];
  
 
