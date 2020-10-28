@@ -38,7 +38,9 @@ static stock account_CheckIfExists(playerid, const race_check)
     mysql_tquery_s(
         Database_ReturnHandle(), 
             str_format("SELECT * \
-            FROM `accounts` \
+            FROM `accounts`\
+            LEFT JOIN `admins`\
+            ON `accounts`.`account_id` = `admins`.`account_id`\
             WHERE `account_name` = '%e'", Misc_ReturnName(playerid)),
             "OnPlayerAccountChecked", "i", playerid
     );

@@ -89,6 +89,6 @@ stock Admin_SetCode(playerid, code)
  * <param name="playerid"> playerid to whose duty is being set</param>
  * <param name="duty"> duty to set</param>
  */
- stock Admin_SetDuty(playerid, bool: duty) {
-     admin_Duty[playerid] = duty;
- }
+stock Admin_SetDuty(playerid, bool: duty) {
+    admin_Duty[playerid] = duty;
+}

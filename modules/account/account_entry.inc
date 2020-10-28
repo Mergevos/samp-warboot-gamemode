@@ -156,4 +156,3 @@ stock Account_SetCountry(playerid, value)
 {
     account_Player_Choosen_Country[playerid] = value;
 }
-
