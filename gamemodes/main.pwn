@@ -25,7 +25,7 @@
 // regex
 #include < Pawn.Regex >
 //hash
-#define BCRYPT_COST 12
+#define BCRYPT_COST 6
 #include < bcrypt >
 //env
 #include < env >
