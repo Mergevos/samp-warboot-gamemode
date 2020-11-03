@@ -11,7 +11,7 @@ const
     MAX_ADMINS = 64;
 
 //----------------------------------------
-static 
+new 
     Iterator: OnlineAdmins<MAX_ADMINS>;
 
 //----------------------------------------
@@ -43,24 +43,6 @@ stock Admin_ReturnCode(playerid)
     return admin_Code[playerid];
 }
 
-/*
- * <summary>Adds an admin into the list of online admins(iter)</summary>
- * <param name="playerid"> playerid to who is being added</param>
- */
-
-stock Admin_IterAdd(playerid)
-{
-    Iter_Add(OnlineAdmins, playerid);
-}
-
-/*
- * <summary>Return admin iter</summary>
- */
-
-stock Iterator: Admin_ReturnIter()
-{
-    return OnlineAdmins;
-}
 
 /*
  * <summary>Sets admin level</summary>

@@ -41,20 +41,17 @@ ACMD:[1]aduty(playerid, params[]) {
     return COMMAND_OK;
 }
 
-// ACMD:[1]achat(playerid, params[]) {
-//     static
-//         text[64];
-
-//     if(sscanf(params, "s[64]", text)) {
-//         return Message_SendUsage(playerid, "/a [Text]");
-//     }
-
-//     foreach(new i : OnlineAdmins) {
-//         va_SendClientMessage(i, X11_LIGHTGREEN, "[A] Admin (%d) %s: %s", Admin_ReturnLevel(playerid), Misc_ReturnName(playerid), text);
-//     }
-
-//     return COMMAND_OK;
-// }
+ACMD:[1]achat(playerid, params[]) {
+    static
+        text[64];
+    if(sscanf(params, "s[64]", text)) {
+        return Message_SendUsage(playerid, "/a [Text]");
+    }
+    foreach(new i : OnlineAdmins) {
+        va_SendClientMessage(i, X11_LIGHTGREEN, "[A] Admin (%d) %s: %s", Admin_ReturnLevel(playerid), Misc_ReturnName(playerid), text);
+    }
+    return COMMAND_OK;
+}
 
 ACMD:[1]cc(playerid, params[]) {
     for(new l = 0; l < 25; l++) SendClientMessageToAll(-1, " ");

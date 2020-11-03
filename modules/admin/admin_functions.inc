@@ -10,7 +10,7 @@ stock Admin_MakePlayer(adminid, playerid, level, code)
 {
     Admin_SetLevel(playerid, level);
     Admin_SetCode(playerid, code);
-    Admin_IterAdd(playerid);
+    Iter_Add(OnlineAdmins, playerid);
 
     va_SendClientMessage(adminid, -1, ""INDIANRED"* You've given admin level %d to %s [%d]", level, Misc_ReturnName(playerid), adminid);
     
