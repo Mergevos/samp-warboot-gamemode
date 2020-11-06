@@ -71,11 +71,11 @@ YCMD:engine(playerid, params[], help)
         return SendClientMessage(playerid, -1, "You're not the driver");
     }
     if(Vehicle_ReturnEngineState(GetPlayerVehicleID(playerid))) {
-        SetVehicleEngineState(GetPlayerVehicleID(playerid), false);
+        Vehicle_SetEngineState(GetPlayerVehicleID(playerid), false);
         SendClientMessage(playerid, -1, "You've just turned off the vehicle's engine");
     }
     else if(!Vehicle_ReturnEngineState(GetPlayerVehicleID(playerid))) {
-        SetVehicleEngineState(GetPlayerVehicleID(playerid), true);
+        Vehicle_SetEngineState(GetPlayerVehicleID(playerid), true);
         SendClientMessage(playerid, -1, "You've just turned on the vehicle's engine");
     }
     return COMMAND_OK;
@@ -93,11 +93,11 @@ YCMD:lights(playerid, params[], help)
         return SendClientMessage(playerid, -1, "You're not the driver");
     }
     if(Vehicle_ReturnLightsState(GetPlayerVehicleID(playerid))) {
-        SetVehicleLightsState(GetPlayerVehicleID(playerid), false);
+        Vehicle_SetLightsState(GetPlayerVehicleID(playerid), false);
         SendClientMessage(playerid, -1, "You've just turned off the vehicle's lights");
     }
     else if(!Vehicle_ReturnLightsState(GetPlayerVehicleID(playerid))) {
-        SetVehicleLightsState(GetPlayerVehicleID(playerid), true);
+        Vehicle_SetLightsState(GetPlayerVehicleID(playerid), true);
         SendClientMessage(playerid, -1, "You've just turned on the vehicle's lights");
     }
     return COMMAND_OK;
@@ -112,11 +112,11 @@ YCMD:windows(playerid, params[], help)
         return SendClientMessage(playerid, -1, "You're not in a vehicle");
     }
     if(!Vehicle_ReturnWindowState(GetPlayerVehicleID(playerid), GetPlayerVehicleSeat(playerid))) {
-        SetVehicleWindowState(GetPlayerVehicleID(playerid), GetPlayerVehicleSeat(playerid), true);
+        Vehicle_SetWindowState(GetPlayerVehicleID(playerid), GetPlayerVehicleSeat(playerid), true);
         SendClientMessage(playerid, -1, "You've just open the vehicle's lights");
     }
     else {
-        SetVehicleWindowState(GetPlayerVehicleID(playerid), GetPlayerVehicleSeat(playerid), false);
+        Vehicle_SetWindowState(GetPlayerVehicleID(playerid), GetPlayerVehicleSeat(playerid), false);
         SendClientMessage(playerid, -1, "You've just close the vehicle's lights");
     }
     return COMMAND_OK;

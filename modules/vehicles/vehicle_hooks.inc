@@ -18,6 +18,6 @@ hook OnGameModeExit()
 
 hook OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 {
-    va_SendClientMessage(playerid, -1, "DEBUG: Vozilo ID: %d, SQLID: %d", vehicleid, Vehicle_SQLID[vehicleid]);
+    va_SendClientMessage(playerid, -1, "DEBUG: Vozilo ID: %d, SQLID: %d", vehicleid, Vehicle_GetSQLID(vehicleid));
     return Y_HOOKS_CONTINUE_RETURN_1;
 }
